@@ -26,11 +26,7 @@ def log_action(func):
         log_file_name = f'{args.company_set_path.split(".")[0]}_logs.txt'
         if action_res == 1 or action_res is None:
             return
-        if not os.path.exists(log_file_name):
-            f_mod = 'w'
-        else:
-            f_mod = 'a'
-        with open(log_file_name, f_mod, encoding='utf-8') as log_file:
+        with open(log_file_name, 'a', encoding='utf-8') as log_file:
             if action_res[0] == 0:
                 log_file.write('[{}]: {}{}{}{}'.format(str(datetime.now()).split(".")[0], *action_res[1]))
             else:
